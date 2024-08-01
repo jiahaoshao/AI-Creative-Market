@@ -11,4 +11,4 @@ mybatis:
         type-aliases-package: name.sauerkraut.acreativemarket.bean #配置实体类
 
 server:
-        port: 888
+        port: 8888
