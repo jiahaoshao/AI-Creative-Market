@@ -7,11 +7,13 @@
 <body>
 登录
 <form role="form" method="post">
-    邮箱：<input type="text" id="email" name="email"> <br>
-    密码：<input type="password" id="password" name="password"> <br>
+    邮箱：<input type="text" id="email" name="email" th:value="${email}">
+    <a th:if="${emailinfo}" class="error" th:text="${emailinfo}"></a><br>
+    密码：<input type="password" id="password" name="password">
+    <a th:if="${pwdinfo}" class="error" th:text="${pwdinfo}"></a><br>
     <input type="submit" id="login" value="登录" formaction="/home">
-    <input type="button" id="register" value="注册" onclick="window.location.href='register'">
 </form>
-
+<input type="button" id="register" value="注册" onclick="window.location.href='register'">
+<a href="/findpwd">找回密码</a>
 </body>
 </html>
