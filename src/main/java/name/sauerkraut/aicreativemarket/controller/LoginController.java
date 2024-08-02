@@ -26,6 +26,7 @@ public class LoginController {
     }
 
 
+    //登录逻辑
     @RequestMapping(value = "/loginIn",method = RequestMethod.POST)
     public String loginIn(String username, String password) {
         UserBean userBean = userService.loginIn(username, password);
@@ -36,6 +37,7 @@ public class LoginController {
         }
     }
 
+    //注册逻辑
     @RequestMapping(value = "/registerUser",method = RequestMethod.POST)
     public String registerUser(String email, String username, String password1, String password2) {
         if(Objects.equals(email, "") || Objects.equals(username, "") || Objects.equals(password1, "") || Objects.equals(password2, ""))
