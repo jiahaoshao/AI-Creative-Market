@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="name.sauerkraut.aicreativemarket.mapper.UserMapper">
+
+    <select id="GetInfo" parameterType="String" resultType="name.sauerkraut.aicreativemarket.bean.UserBean">
+        SELECT * FROM user WHERE username = #{username} AND password = #{password}
+    </select>
+
+    <insert id="SetInfo" parameterType="String">
+        INSERT INTO user(email, username, password)
+        VALUES (#{email}, #{username}, #{password})
+    </insert>
+
+    <select id="IsExist" parameterType="String" resultType="name.sauerkraut.aicreativemarket.bean.UserBean">
+        SELECT * FROM user WHERE email = #{email}
+    </select>
+</mapper>
