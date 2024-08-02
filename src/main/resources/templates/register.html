@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <title>register</title>
@@ -7,11 +7,13 @@
 <body>
 注册
 <form role="form" method="post">
-    邮箱：<input type="text" id="email" name="email"> <br>
-    账号：<input type="text" id="username" name = "username"> <br>
-    密码：<input type="password" id = "password1" name = "password1"> <br>
-    确认密码：<input type="password" id = "password2" name = "password2"> <br>
-    <input type="submit" id = "register" value = "register" formaction="/registerUser">
+    邮箱：<input type="text" id="email" name="email" th:value="${email}"> <br>
+    账号：<input type="text" id="username" name = "username" th:value="${username}"> <br>
+    密码：<input type="password" id = "password1" name = "password1" th:value="${password1}"> <br>
+    确认密码：<input type="password" id = "password2" name = "password2" th:value="${password2}"> <br>
+    <input type="submit" id = "register" value = "注册" formaction="/registerUser">
+    <input type="button" id="return" value="返回" onclick="window.location.href='login'">
+    <div th:if="${registerinfo}" class="error" th:text="${registerinfo}"></div>
 </form>
 </body>
 </html>

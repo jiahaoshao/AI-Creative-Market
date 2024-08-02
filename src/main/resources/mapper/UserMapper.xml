@@ -3,7 +3,7 @@
 <mapper namespace="name.sauerkraut.aicreativemarket.mapper.UserMapper">
 
     <select id="GetInfo" parameterType="String" resultType="name.sauerkraut.aicreativemarket.bean.UserBean">
-        SELECT * FROM user WHERE username = #{username} AND password = #{password}
+        SELECT * FROM user WHERE email = #{email} AND password = #{password}
     </select>
 
     <insert id="SetInfo" parameterType="String">

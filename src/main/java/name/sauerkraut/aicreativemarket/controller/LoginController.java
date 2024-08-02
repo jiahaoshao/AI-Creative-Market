@@ -3,9 +3,11 @@ package name.sauerkraut.aicreativemarket.controller;
 import name.sauerkraut.aicreativemarket.bean.UserBean;
 import name.sauerkraut.aicreativemarket.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
@@ -20,36 +22,14 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping("/register")
-    public String register() {
-        return "register";
-    }
-
-
     //登录逻辑
     @RequestMapping(value = "/loginIn",method = RequestMethod.POST)
-    public String loginIn(String username, String password) {
-        UserBean userBean = userService.loginIn(username, password);
+    public String loginIn(String email, String password) {
+        UserBean userBean = userService.loginIn(email, password);
         if(userBean != null) {
             return "success";
         }else{
             return "error";
         }
-    }
-
-    //注册逻辑
-    @RequestMapping(value = "/registerUser",method = RequestMethod.POST)
-    public String registerUser(String email, String username, String password1, String password2) {
-        if(Objects.equals(email, "") || Objects.equals(username, "") || Objects.equals(password1, "") || Objects.equals(password2, ""))
-            return "errorregister";
-        if(password1.equals(password2))
-        {
-            Boolean f =  userService.registerUser(email, username, password1);
-            if(f)
-                return "successregister";
-            else
-                return "errorregister";
-        }
-        return "errorregister";
     }
 }
